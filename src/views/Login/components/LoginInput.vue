@@ -14,6 +14,7 @@
         :placeholder="placeholder"
         @input="
           (e) => {
+            // @ts-ignore
             $emit('update:modelValue', e.target.value);
           }
         "
@@ -43,7 +44,6 @@
       border-radius: 13.9019px;
       border: 1px solid rgba(0, 0, 0, 0);
   
-      font-family: 'Neometric Alt', sans-serif;
       font-weight: 500;
       font-size: 14px;
       line-height: 17px;
