@@ -1,29 +1,23 @@
 <template>
-  <div class="user-checkbox">
-    <div
-        class="user-checkbox__checkbox"
-        @click="
-        (e) => {
-          $emit('update:modelValue', !modelValue);
-        }
-      "
-    >
-      <div
-          class="user-checkbox__inner"
-          :class="{ 'user-checkbox__inner_active': modelValue }"
-      ></div>
+  <div class="user-checkbox" @click="(e) => {
+      authStore.rememberMe = !authStore.rememberMe;
+    }
+    ">
+    <div class="user-checkbox__checkbox">
+      <div class="user-checkbox__inner" :class="{ 'user-checkbox__inner_active': authStore.rememberMe }"></div>
     </div>
     <div class="user-checkbox__label">{{ label }}</div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useAuthStore } from '@/stores/auth';
+
 const props = defineProps({
-  modelValue: Boolean,
   label: String,
 });
 
-const emits = defineEmits(['modelChange']);
+const authStore = useAuthStore();
 </script>
 
 <style scoped lang="scss">
